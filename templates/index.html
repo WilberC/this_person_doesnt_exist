@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ super() }}{% endblock %}
+
+{% block styles %}
+    <style>
+        section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100vw;
+            height: 90vh;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        form input {
+            padding-left: 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <h4 class="card-title">Photos</h4>
+                <p class="card-text">This option will generate a winrar file that contains photos in ".jpg" format (In
+                    case
+                    the the number of photos is more than 1 otherwhise It's going to generate only one photo).</p>
+                <form action="/photos/" method="POST" id="photos-form">
+                    <input type="number" placeholder="quantity" name="quantity" required>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" data-type="img" form="photos-form">Get
+                    Photos
+                </button>
+            </div>
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <h4 class="card-title">Persons</h4>
+                <p class="card-text">This option will show you a list of persons in a table.</p>
+                <form action="/persons/" method="POST" id="persons-form">
+                    <input type="number" placeholder="quantity" name="quantity" required>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" data-type="img" data-toggle="modal"
+                        data-target="show-persons" form="persons-form">Show Me Persons
+                </button>
+            </div>
+        </div>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+            <div class="card-header"></div>
+            <div class="card-body">
+                <h4 class="card-title">Json File</h4>
+                <p class="card-text">This option we will generate a json file that contains a base 64 img
+                    (this files are in ".jpg" ). The format of the file is: </p>
+                <code>
+                    {"base_64_img":
+                    "data:image/jpg;base64, ..."
+                    }</code>
+                <br>
+                <br>
+                <form action="/json-file/" method="POST" id="json-file-form">
+                    <input type="number" placeholder="quantity" name="quantity" required>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" data-type="json" form="json-file-form">
+                    Get Json File
+                </button>
+            </div>
+        </div>
+    </section>
+{% endblock %}

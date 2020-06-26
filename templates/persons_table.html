@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ super() }}{% endblock %}
+
+{% block styles %}
+    <style>
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        .index-photo {
+            font-size: xx-large;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Photo</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for person in persons %}
+            <tr>
+                <th scope="row" class="index-photo">{{ loop.index }}</th>
+                <td><img src="data:image/jpg;base64, {{ person }}" alt="person"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
